@@ -1,9 +1,12 @@
+/*
+Mobile first
+*/
 body{
     background-color: black;
     color: #F9DAD0;
     left: 0;
     top: 0;
-    font-size: 20px;
+    font-size: 12px;
 }
 .deck{
     display: flex;
@@ -12,16 +15,6 @@ body{
     justify-content: space-evenly;
     border: 2px solid #A491D3;
     height: 50vh;
-}
-
-#hand{
-    margin-left: auto;
-    margin-right: auto;
-    display:flex;
-    justify-content: space-between;
-    max-width: 1080px;
-    border: 4px solid #C5DCA0;
-    padding: 10px;
 }
 
 #hand .card
@@ -38,6 +31,21 @@ body{
     margin-left: 2px;
     font-size: 20px;
 }
+#hand{
+    display:flex;
+    justify-content: space-between;
+    max-width: 300px;
+    border: 4px solid #C5DCA0;
+    padding: 10px;
+    overflow:scroll ;
+
+}
+
+.buttons{
+    text-align: center;
+}
+
+
 
 #hand:hover .card:hover{
     border: 2px solid #C5DCA0;
@@ -160,45 +168,14 @@ a:link, a:visited {
     background-color: rgb(196, 84, 84);
   }
 
-
-  @media screen and (max-width: 600px) {
+/*
+  Screens > 600px
+*/
+  @media screen and (min-width: 600px) {
     body{
-        font-size: 12px;
+        font-size: 15px;
     }
-    #hand .card
-    {
-        border: solid 1px #aaa;
-        border-radius: 9px;
-        width: 80px;
-        height: 90px;
-        background-color: white;
-        padding: 3px 3px 3px 5px;
-        margin: 5px;
-        color: black;
-        margin: auto;
-        margin-left: 2px;
-        font-size: 20px;
-    }
-    #hand{
-        display:flex;
-        justify-content: space-between;
-        max-width: 300px;
-        border: 4px solid #C5DCA0;
-        padding: 10px;
-        overflow:scroll ;
-
-    }
-
-    .buttons{
-        text-align: center;
-    }
-
-  }
-
-  @media only screen and (max-width: 1200px) {
-    body{
-        font-size: 12px;
-    }
+    
     #hand .card
     {
         border: solid 1px #aaa;
@@ -222,6 +199,42 @@ a:link, a:visited {
         overflow:scroll ;
 
     }
+  }
+
+  /*
+    Screens > 1000px
+  */
+  @media screen and (min-width: 1000px) {
+    body{
+        font-size: 20px;
+    }
+
+    #hand{
+        margin-left: auto;
+        margin-right: auto;
+        display:flex;
+        justify-content: space-between;
+        max-width: 1080px;
+        border: 4px solid #C5DCA0;
+        padding: 10px;
+        overflow:visible;
+    }
+    
+    #hand .card
+    {
+        border: solid 1px #aaa;
+        border-radius: 9px;
+        width: 80px;
+        height: 90px;
+        background-color: white;
+        padding: 3px 3px 3px 5px;
+        margin: 5px;
+        color: black;
+        margin: auto;
+        margin-left: 2px;
+        font-size: 20px;
+    }
+   
 
     .buttons{
         text-align: center;
