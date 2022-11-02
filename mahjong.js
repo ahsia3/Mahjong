@@ -67,6 +67,7 @@ function Build_Deck(){
 
     for(let i = 0 ; i < 16; i++){
         Deck.push(game_deck[i]);
+        game_deck.splice(i, 1);
     }
 
     return Deck;
