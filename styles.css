@@ -194,3 +194,37 @@ a:link, a:visited {
     }
 
   }
+
+  @media screen and (max-width: 1000px) {
+    body{
+        font-size: 12px;
+    }
+    #hand .card
+    {
+        border: solid 1px #aaa;
+        border-radius: 9px;
+        width: 80px;
+        height: 90px;
+        background-color: white;
+        padding: 3px 3px 3px 5px;
+        margin: 5px;
+        color: black;
+        margin: auto;
+        margin-left: 2px;
+        font-size: 20px;
+    }
+    #hand{
+        display:flex;
+        justify-content: space-between;
+        max-width: 600px;
+        border: 4px solid #C5DCA0;
+        padding: 10px;
+        overflow:scroll ;
+
+    }
+
+    .buttons{
+        text-align: center;
+    }
+
+  }
