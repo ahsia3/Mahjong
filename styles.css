@@ -181,7 +181,7 @@ a:link, a:visited {
         margin-right: auto;
         display:flex;
         justify-content: space-between;
-        max-width: 40vh;
+        max-width: 360px;
         border: 4px solid #C5DCA0;
         padding: 10px;
         overflow-y:auto ;
