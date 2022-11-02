@@ -177,12 +177,14 @@ a:link, a:visited {
         font-size: 20px;
     }
     #hand{
+        margin-left: auto;
+        margin-right: auto;
         display:flex;
         justify-content: space-between;
         max-width: 360px;
         border: 4px solid #C5DCA0;
         padding: 10px;
-        overflow-y:auto ;
+        overflow:scroll ;
 
     }
 
