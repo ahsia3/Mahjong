@@ -3,7 +3,7 @@
     Currently do not have AI developed, so for now the game is in your hands.
 */
 // To build deck
-var types = ["bamboos", "circles", "mans"];
+var types = ["bamboos", "circles", "characters"];
 var dr_types = ["dragons"];
 var wi_types = ["winds"];
 var values = [1,2,3,4,5,6,7,8,9];
@@ -156,7 +156,7 @@ function Sort(deck){
             bamDeck.push(deck[i]);
         else if (deck[i].Suit == 'circles')
             cirDeck.push(deck[i]);
-        else if (deck[i].Suit == 'mans')
+        else if (deck[i].Suit == 'characters')
             manDeck.push(deck[i]);
         else if(deck[i].Suit == 'dragons')
             draDeck.push(deck[i]);
@@ -223,7 +223,7 @@ function Render_Deck(deck){
 		icon='&#126992;';
 		else if (deck[i].Suit == 'circles')
 		icon = '&#127001;';
-		else if (deck[i].Suit == 'mans')
+		else if (deck[i].Suit == 'characters')
 		icon = '&#126983;';
 		else if(deck[i].Suit == 'dragons')
 		icon = '&#126981;';
@@ -331,7 +331,7 @@ function CalculateDeficiencyNumber(deck){
 		    tempBam.push(deck[i]);
 		else if (deck[i].Suit == 'circles')
 		    tempCir.push(deck[i]);
-		else if (deck[i].Suit == 'mans')
+		else if (deck[i].Suit == 'characters')
             tempMan.push(deck[i]);
 		else if(deck[i].Suit == 'dragons')
 		    tempDra.push(deck[i]);
