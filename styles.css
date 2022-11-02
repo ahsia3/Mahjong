@@ -177,8 +177,6 @@ a:link, a:visited {
         font-size: 20px;
     }
     #hand{
-        margin-left: auto;
-        margin-right: auto;
         display:flex;
         justify-content: space-between;
         max-width: 360px;
