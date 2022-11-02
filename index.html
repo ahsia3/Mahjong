@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mahjong HTML/CSS/JS</title>
+    <link rel="stylesheet" href="styles.css">
+     <script src="mahjong.js"></script> 
+</head>
+<body onload="GameStart()">
+    <div class="deck">
+        <h1>Mahjong</h1>
+
+        <div class="buttons">
+            <a href="javascript:void(0)" class="btn btnRestart" onclick="Restart()">Restart</a>
+            <a href="javascript:void(0)" class="btn" onclick="Draw()">Draw</a>
+            <a href="javascript:void(0)" class="btn" onclick="CalculateDef()">Calculate Deficiency</a>
+        </div>
+
+
+        <div class="options">Your Hand</div>
+
+        <div id="hand">
+
+        </div>
+    </div>
+
+    <div class="texts">
+        <div id="texts" class="texts_child texts_start">
+            
+        </div>
+        <div id="stats" class="texts_child texts_end">
+            <h2>Stats</h2>
+            <p class="stats">Deficiency number: </p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Developed by Anthony Hsia 2022</p>
+    </div>
+</body>
+
+</html>
