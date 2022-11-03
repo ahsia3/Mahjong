@@ -21,8 +21,8 @@ body{
 {
     border: solid 1px #aaa;
     border-radius: 9px;
-    width: 80px;
-    height: 90px;
+    width: 40px;
+    height: 50px;
     background-color: white;
     padding: 3px 3px 3px 5px;
     margin: 5px;
@@ -190,12 +190,17 @@ a:link, a:visited {
 }
 
 #discards .discards_cards{
-    width: 25px;
-    height: 50px;
+    width: 15px;
+    height: 30px;
     border: 1px solid grey;
     background-color: white;
     border-radius: 5px;
+    padding-left: 2px;
+}
 
+.discards_cards .type
+{
+	text-align: center;
 }
 
 .Discard{
@@ -236,7 +241,20 @@ a:link, a:visited {
         overflow:scroll ;
 
     }
-  }
+
+    
+    #discards .discards_cards{
+        width: 25px;
+        height: 50px;
+        border: 1px solid grey;
+        background-color: white;
+        border-radius: 5px;
+        padding-left: 2px;
+    }
+    .type{
+        padding-top: 20px;
+    }
+}
 
   /*
     Screens > 1000px

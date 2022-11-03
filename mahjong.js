@@ -241,7 +241,7 @@ function Render_Deck(deck){
         else if(deck[i].Suit == 'winds')
 		icon = '&#126976;';
 
-		card.innerHTML = deck[i].Value + '<br/><br/>';
+		card.innerHTML = deck[i].Value + '<br/>';
 		card.className = 'card';
         type.className = 'type';
         type.innerHTML = icon;
