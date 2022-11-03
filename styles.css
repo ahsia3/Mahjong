@@ -200,7 +200,10 @@ a:link, a:visited {
 
 .Discard{
     border: 1px solid white;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content:left;
+    align-items: center;
 }
 
 /*
