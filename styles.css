@@ -118,10 +118,21 @@ line separator
     align-self: stretch;
 }
 
+.texts:after{
+    content: "";
+    border: 1px solid #F5F2B8;
+    align-self: stretch;
+}
+
 .texts_start{
     order: -1;
     width: 60vh;
 }
+
+.texts_end{
+    order: +1;
+}
+
 
 .texts_child{
     display: flex;
@@ -139,7 +150,7 @@ line separator
 }
 
 .footer{
-    height: 10vh;
+    height: 5vh;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -167,6 +178,30 @@ a:link, a:visited {
   .buttons .btnRestart:hover{
     background-color: rgb(196, 84, 84);
   }
+
+.middle{
+    display: flex;
+    flex-direction: row;
+    justify-content:left;
+    align-items: flex-start;
+    flex-wrap:wrap;
+    color: black;
+    padding: 10px 10px 10px 10px;
+}
+
+#discards .discards_cards{
+    width: 25px;
+    height: 50px;
+    border: 1px solid grey;
+    background-color: white;
+    border-radius: 5px;
+
+}
+
+.Discard{
+    border: 1px solid white;
+    text-align: center;
+}
 
 /*
   Screens > 600px

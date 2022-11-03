@@ -268,12 +268,47 @@ function onClickFunction(card, i){
     playerDeck = Sort(playerDeck);
     Render_Deck(playerDeck);
     isDiscard = false;
+    Render_Discards();
 }
 
 function CalculateDef(){
     isCalculatedDN = true;
     CalculateDeficiencyNumber(Sort(playerDeck));
     ChatBox("Deficiency number of " + deficiencyNum);
+}
+
+function Render_Discards(){
+    // removes all elements with classnames
+    var list = document.getElementsByClassName("discards_cards");
+        for(var i = list.length - 1; 0 <= i; i--)
+            if(list[i] && list[i].parentElement)
+            list[i].parentElement.removeChild(list[i]);
+
+    let discard = document.getElementById("discards");
+
+    for(let i = 0 ; i < discard_deck.length; i++){
+        let card = document.createElement("div");
+        let type = document.createElement("div");
+        var icon = '';
+		if (discard_deck[i].Suit == 'bamboos')
+		icon='&#126992;';
+		else if (discard_deck[i].Suit == 'circles')
+		icon = '&#127001;';
+		else if (discard_deck[i].Suit == 'characters')
+		icon = '&#126983;';
+		else if(discard_deck[i].Suit == 'dragons')
+		icon = '&#126981;';
+        else if(discard_deck[i].Suit == 'winds')
+		icon = '&#126976;';
+
+		card.innerHTML = discard_deck[i].Value + '<br/>';
+		card.className = 'discards_cards';
+        type.className = 'type';
+        type.innerHTML = icon;
+
+        card.appendChild(type);
+        discard.appendChild(card);
+    }
 }
 
 function Render_Stats(defNum){
