@@ -251,7 +251,7 @@ a:link, a:visited {
         border-radius: 5px;
         padding-left: 2px;
     }
-    .type{
+    .card .type{
         padding-top: 20px;
     }
 }
