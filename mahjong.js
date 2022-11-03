@@ -75,10 +75,16 @@ function Build_Deck(){
 
 function Restart(){
     // removes all elements with classnames
+    var list = document.getElementsByClassName("discards_cards");
+        for(var i = list.length - 1; 0 <= i; i--)
+            if(list[i] && list[i].parentElement)
+            list[i].parentElement.removeChild(list[i]);
+            
     var list = document.getElementsByClassName("card");
         for(var i = list.length - 1; 0 <= i; i--)
             if(list[i] && list[i].parentElement)
             list[i].parentElement.removeChild(list[i]);
+            
 
     var list = document.getElementsByClassName("type");
         for(var i = list.length - 1; 0 <= i; i--)
