@@ -1,2 +1,2 @@
 # Mahjong
-#### Mahjong project started on ** 29 Oct 22 **
+#### Mahjong project started on **29 Oct 22**
