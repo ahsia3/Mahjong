@@ -450,6 +450,14 @@ function Render_Discards(){
 
         card.appendChild(type);
         discard.appendChild(card);
+
+        card.addEventListener('click', (event) => {
+            ChatBox("Discarded: " + discard_deck[i].Value + " " + discard_deck[i].Suit);
+        });
+        
+        card.addEventListener('mouseover', function handleMouseOver() {
+            card.style.cursor = "pointer";
+        });
     }
 }
 
