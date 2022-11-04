@@ -19,16 +19,18 @@ let playerDeck = new Array();
 let deficiencyNum = 0;
 let isMahjong = false;
 let isCalculatedDN = false;
+let kongDeck = new Array();
+
 
 function Build_Deck(){
     let Deck = new Array();
 
     for(let i = 0; i < types.length; i++){
         for(let j = 0 ; j < values.length; j++){
-            let card = {Value: values[j], Suit: types[i]};
-            let card2 = {Value: values[j], Suit: types[i]};
-            let card3 = {Value: values[j], Suit: types[i]};
-            let card4 = {Value: values[j], Suit: types[i]};
+            let card = {Value: values[j], Suit: types[i], Lock: "unlocked"};
+            let card2 = {Value: values[j], Suit: types[i], Lock: "unlocked"};
+            let card3 = {Value: values[j], Suit: types[i], Lock: "unlocked"};
+            let card4 = {Value: values[j], Suit: types[i], Lock: "unlocked"};
             game_deck.push(card);
             game_deck.push(card2);
             game_deck.push(card3);
@@ -38,10 +40,10 @@ function Build_Deck(){
 
     for(let i = 0 ; i < dr_types.length; i++){
         for(let j = 0 ; j < dr_values.length; j++){
-            let card = {Value: dr_values[j], Suit: dr_types[i]};
-            let card2 = {Value: dr_values[j], Suit: dr_types[i]};
-            let card3 = {Value: dr_values[j], Suit: dr_types[i]};
-            let card4 = {Value: dr_values[j], Suit: dr_types[i]};
+            let card = {Value: dr_values[j], Suit: dr_types[i], Lock: "unlocked"};
+            let card2 = {Value: dr_values[j], Suit: dr_types[i], Lock: "unlocked"};
+            let card3 = {Value: dr_values[j], Suit: dr_types[i], Lock: "unlocked"};
+            let card4 = {Value: dr_values[j], Suit: dr_types[i], Lock: "unlocked"};
             game_deck.push(card);
             game_deck.push(card2);
             game_deck.push(card3);
@@ -51,10 +53,10 @@ function Build_Deck(){
 
     for(let i = 0 ; i < wi_types.length; i++){
         for(let j = 0 ; j < wi_values.length; j++){
-            let card = {Value: wi_values[j], Suit: wi_types[i]};
-            let card2 = {Value: wi_values[j], Suit: wi_types[i]};
-            let card3 = {Value: wi_values[j], Suit: wi_types[i]};
-            let card4 = {Value: wi_values[j], Suit: wi_types[i]};
+            let card = {Value: wi_values[j], Suit: wi_types[i], Lock: "unlocked"};
+            let card2 = {Value: wi_values[j], Suit: wi_types[i], Lock: "unlocked"};
+            let card3 = {Value: wi_values[j], Suit: wi_types[i], Lock: "unlocked"};
+            let card4 = {Value: wi_values[j], Suit: wi_types[i], Lock: "unlocked"};
             game_deck.push(card);
             game_deck.push(card2);
             game_deck.push(card3);
@@ -106,6 +108,7 @@ function Restart(){
     messages.length = 0;
     pairs = 0; deficiencyNum = 0;
     discard_deck.length = 0;
+    kongDeck.length = 0;
     isMahjong = false;
     isCalculatedDN = false;
     isDiscard = false;
@@ -201,6 +204,101 @@ function Organize(deck){
     }
 }
 
+function DetermineKongs(){
+    if(isMahjong){
+        ChatBox("You're trying to kong when you mahjong??");
+        return;
+    }
+    let isKong = false;
+
+    playerDeck = Sort(playerDeck);
+
+    for(let i = 0 ; i < playerDeck.length; i++){
+        let firstCard = playerDeck[i];
+        let secondCard, thirdCard, fourthCard;
+        if(i+1 < playerDeck.length && 
+            i+2 < playerDeck.length && 
+            i+3 < playerDeck.length){
+
+            secondCard = playerDeck[i+1];
+            thirdCard = playerDeck[i+2];
+            fourthCard = playerDeck[i+3];
+
+            if(firstCard.Suit == "dragons" || firstCard.Suit == "winds"){
+                console.log(secondCard.Value.localeCompare(firstCard.Value));
+                if((secondCard.Value.localeCompare(firstCard.Value) == 0 &&
+                    thirdCard.Value.localeCompare(secondCard.Value) == 0 &&
+                    fourthCard.Value.localeCompare(thirdCard.Value) == 0)){
+                        // kong here
+                        playerDeck[i].Lock = "locked";
+                        playerDeck[i+1].Lock = "locked";
+                        playerDeck[i+2].Lock = "locked";
+                        playerDeck[i+3].Lock = "locked";
+    
+                        kongDeck.push(playerDeck[i]);
+                        kongDeck.push(playerDeck[i+1]);
+                        kongDeck.push(playerDeck[i+2]);
+                        kongDeck.push(playerDeck[i+3]);
+    
+                        playerDeck.splice(i+3, 1);
+                        playerDeck.splice(i+2, 1);
+                        playerDeck.splice(i+1, 1);
+                        playerDeck.splice(i, 1);
+    
+                        isKong = true;
+                        break;
+                }else{
+                    i+3;
+                    continue;
+                }
+            }
+
+            if((secondCard.Value-firstCard.Value == 0 &&
+                thirdCard.Value-secondCard.Value == 0 &&
+                fourthCard.Value-thirdCard.Value == 0 && firstCard.Lock.localeCompare("locked") != 0)){
+                    // kong here
+                    playerDeck[i].Lock = "locked";
+                    playerDeck[i+1].Lock = "locked";
+                    playerDeck[i+2].Lock = "locked";
+                    playerDeck[i+3].Lock = "locked";
+
+                    kongDeck.push(playerDeck[i]);
+                    kongDeck.push(playerDeck[i+1]);
+                    kongDeck.push(playerDeck[i+2]);
+                    kongDeck.push(playerDeck[i+3]);
+
+                    playerDeck.splice(i+3, 1);
+                    playerDeck.splice(i+2, 1);
+                    playerDeck.splice(i+1, 1);
+                    playerDeck.splice(i, 1);
+
+                    isKong = true;
+                    break;
+            }else{
+                i+3;
+                continue;
+            }
+        }
+    }
+
+    if(isKong){
+        let card = game_deck.pop();
+        playerDeck.push(card);
+        ChatBox("There is a Kong! Drew a card: " + card.Value + " " + card.Suit + " [waiting for discard . .]");
+        
+        Render_Deck(playerDeck);
+        // Check mahjong, if not then carry on
+        CalculateDeficiencyNumber(Sort(playerDeck));
+
+        if(deficiencyNum == 0){
+            ChatBox("MAHJONG!!");
+        }
+
+    }else{
+        ChatBox("You are false.");
+    }
+}
+
 function Shuffle(deck)
 {
 	// for 1000 turns
@@ -225,6 +323,39 @@ function Render_Deck(deck){
             list[i].parentElement.removeChild(list[i]);
 
     let deckID = document.getElementById("hand");
+
+    for(let i = 0 ; i < kongDeck.length; i++){
+        let card = document.createElement("div");
+        let type = document.createElement("div");
+        var icon = '';
+		if (kongDeck[i].Suit == 'bamboos')
+		icon='&#126992;';
+		else if (kongDeck[i].Suit == 'circles')
+		icon = '&#127001;';
+		else if (kongDeck[i].Suit == 'characters')
+		icon = '&#126983;';
+		else if(kongDeck[i].Suit == 'dragons')
+		icon = '&#126981;';
+        else if(kongDeck[i].Suit == 'winds')
+		icon = '&#126976;';
+
+		card.innerHTML = kongDeck[i].Value + '<br/>';
+		card.className = 'card';
+        type.className = 'type';
+        type.innerHTML = icon;
+        card.style.border = "2px solid #A491D3";
+
+        card.appendChild(type);
+        deckID.appendChild(card);
+        
+        card.addEventListener('click', (event) => {
+            ChatBox("Kong Locked: " + kongDeck[i].Value + " " + kongDeck[i].Suit);
+          });
+
+        card.addEventListener('mouseover', function handleMouseOver() {
+            card.style.cursor = "pointer";
+        });
+    }
 
     for(let i = 0 ; i < deck.length; i++){
         let card = document.createElement("div");
